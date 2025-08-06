@@ -6,7 +6,9 @@ require('dotenv').config();
 const pool = require('./config/db');
 const authMiddleware = require('./midllewares/authMiddlewares');
 const app = express();
-app.use(cors())
+app.use(cors({
+    origin: 'https://brilliant-toffee-ff455e.netlify.app'
+}))
 app.use(express.json());
 const PORT = process.env.PORT || 3002;
 const authRoutes = require('./routes/authRoutes');
