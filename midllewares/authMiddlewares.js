@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-module.exports = function (req, res, next) {
+function authToken(req, res, next){
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1]; 
   
@@ -9,10 +9,17 @@ module.exports = function (req, res, next) {
   }
   
   try {
-    const decoded = jwt.verify(token, process.env.JSON_SECRET); // ✅ Түзетілді
+    const decoded = jwt.verify(token, process.env.JSON_SECRET); 
     req.user = decoded;
     next();
-  } catch (e) {
+  } catch (error) {
     return res.status(403).json({ error: 'Invalid token.' });
   }
 };
+
+
+module.exports = {
+  authToken
+}
+
+

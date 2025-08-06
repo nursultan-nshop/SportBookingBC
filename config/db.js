@@ -2,7 +2,7 @@ const { Pool } = require('pg');
 require('dotenv').config();
 
 const pool = new Pool({
-    connectionString: 'postgresql://nurs_n:6EfYSgo9EF1U6qRf66qgyPUHI7PH7Mxw@dpg-d28bbqfdiees73dh4m4g-a.oregon-postgres.render.com/sport_booking_db',
+    connectionString: 'postgresql://nursultan:HwKhYbSz48C26sTcf4kPtJYE6Zmti5fm@dpg-d2904dggjchc73c6uong-a.oregon-postgres.render.com/sport_booking_db_avy4',
     ssl: {
         rejectUnauthorized: false
     }
