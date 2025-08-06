@@ -5,6 +5,8 @@ const pool = require('../config/db');
 
 exports.register = async (req, res) => {
   const { username, password, email } = req.body;
+  console.log(req.body);
+  
 
   if (!username || !password || !email) {
     return res.status(400).json({ error: "Қолданушы аты, email және құпия сөз қажет" });
@@ -38,6 +40,8 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   const { email, password } = req.body;
 
+  console.log("Login: ",req.body);
+  
   if (!email || !password) {
     return res.status(400).json({ error: "Email және құпия сөз қажет" });
   }
@@ -62,10 +66,10 @@ exports.login = async (req, res) => {
       { expiresIn: "1h" }
     );
 
-    res.status(200).json({ message: "Кіру сәтті өтті", token });
+    res.status(200).json({ message: "Кіру сәтті өтті", data:[user,{token}] });
   } catch (err) {
-    alert("Сәтті тіркелді!")
-
+      console.log("Server error: ",err);
+      res.status(500).json({message:err})
   }
 };
 

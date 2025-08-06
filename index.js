@@ -7,7 +7,7 @@ const pool = require('./config/db');
 const authMiddleware = require('./midllewares/authMiddlewares');
 const app = express();
 app.use(cors({
-    origin: 'https://brilliant-toffee-ff455e.netlify.app'
+    origin: 'http://localhost:5173'
 }))
 app.use(express.json());
 const PORT = process.env.PORT || 3002;
